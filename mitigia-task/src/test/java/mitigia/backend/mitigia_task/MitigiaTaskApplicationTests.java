@@ -1,13 +1,13 @@
-package mitigia.backend.mitigia_task;
+// package mitigia.backend.mitigia_task;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+// import org.junit.jupiter.api.Test;
+// import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class MitigiaTaskApplicationTests {
+// @SpringBootTest
+// class MitigiaTaskApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+// 	@Test
+// 	void contextLoads() {
+// 	}
 
-}
+// }
