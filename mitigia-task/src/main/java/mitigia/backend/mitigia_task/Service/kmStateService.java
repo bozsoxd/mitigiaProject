@@ -23,6 +23,11 @@ public class kmStateService {
         projectService = new ProjectService();
     }
 
+
+    public List<kmState> getAllkmStates(){
+        return kmStateRepository.findAll();
+    }
+
     public String addKmState(String license_plate, Integer km_state){
         LocalDate currentDate = LocalDate.now();
         List<Project> projList = projectService.getAllProjects();
@@ -43,7 +48,13 @@ public class kmStateService {
             if(currentDate.isBefore(lastSave)){
                 return "Bad date";
             }
+            if(km_state <= LastKm(license_plate)){
+                return "km can't be smaller than the last one";
+            }
+
         }
+
+
 
 
         kmState newKmState = new kmState(license_plate, km_state, currentDate);
@@ -57,7 +68,7 @@ public class kmStateService {
 
     }
 
-    public LocalDate getLastStateDate(String licensePlate){
+    private LocalDate getLastStateDate(String licensePlate){
         List<kmState> kmStateList = kmStateRepository.findAll();
         LocalDate lastState = null;
         for (kmState kmState : kmStateList) {
@@ -69,6 +80,18 @@ public class kmStateService {
 
         return lastState;
     }
+
+    private Integer LastKm(String licensePlate){
+        List<kmState> kmStateList = kmStateRepository.findAll();
+        Integer greatestKm = 0;
+        for (kmState kmState : kmStateList) {
+            if(kmState.getlicence_plate().equals(licensePlate) && kmState.getkm_state() > greatestKm){
+                greatestKm = kmState.getkm_state();
+            }
+        }
+        return greatestKm;
+    }
+    
 
 
 }

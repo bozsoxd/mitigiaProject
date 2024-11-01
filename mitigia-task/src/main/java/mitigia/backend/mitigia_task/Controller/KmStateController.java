@@ -1,6 +1,9 @@
 package mitigia.backend.mitigia_task.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +26,11 @@ public class KmStateController {
         System.out.println(entity.getkm_state());
        String response = kmStateService.addKmState(entity.getlicence_plate(), entity.getkm_state());
         return response;
+    }
+
+    @GetMapping("/kmStates")
+    public List<kmState> getAllkmState(){
+        return kmStateService.getAllkmStates();
     }
 
 }

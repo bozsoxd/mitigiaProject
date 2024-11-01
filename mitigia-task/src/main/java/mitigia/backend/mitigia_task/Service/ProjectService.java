@@ -11,7 +11,6 @@ import mitigia.backend.mitigia_task.Model.Project;
 @Service
 public class ProjectService {
 
-
     @Autowired
     private ProjectRepository projectRepository;
 
